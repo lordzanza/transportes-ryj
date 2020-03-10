@@ -1,7 +1,11 @@
 <app-menu></app-menu>
 <br>
-<div class="container">
-    <div class="jumbotron">
+<br>
+<br>
+<div class="container"  id="background">
+    <br>
+    <br>
+    <div class="jumbotron" style="margin-top: 20px;">
         <h2>Bienvenido</h2>
         <br>
         <div class="row">
@@ -9,13 +13,19 @@
                 <button class="btn btn-primary" [routerLink]="[ '/users' ]">Administrar Usuarios</button>
             </div>
             <div class="col-3">
-                <button class="btn btn-primary">Registrar Condutor</button>
+                <button class="btn btn-primary" [routerLink]="[ '/registrarConductor'] ">Registrar Condutor</button>
             </div>
             <div class="col-3">
-                <button class="btn btn-primary">Gastos de vehiculo</button>
+                <button class="btn btn-primary" [routerLink]="[ '/registroVehiculo'] ">Registrar Vehiculo</button>
             </div>
             <div class="col-3">
-                <button class="btn btn-primary">Reporte mensual de gastos</button>
+                <button class="btn btn-primary" [routerLink]="[ '/gastosVehiculo'] ">Gastos de vehiculo</button>
+            </div>
+        </div>
+<br>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-primary" [routerLink]="[ '/reportes'] ">Reporte mensual de gastos</button>
             </div>
         </div>
 

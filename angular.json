@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ryj"
+    }
+  },
+  "defaultProject": "ryj",
+  "cli": {
+    "analytics": "5acbb332-57aa-4e2c-a679-01a5148f7334"
+  }
 }

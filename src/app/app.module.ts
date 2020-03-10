@@ -7,12 +7,20 @@ import { BlackboardComponent } from './blackboard/blackboard.component';
 import  { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 import { MenuComponent } from './menu/menu.component';
+import { RegistroDeConductorComponent } from './registro-de-conductor/registro-de-conductor.component';
+import { GastosVehiculoComponent } from './gastos-vehiculo/gastos-vehiculo.component';
+import { ReportesComponent } from './reportes/reportes.component';
+import { RegistroVehiculosComponent } from './registro-vehiculos/registro-vehiculos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'blackboard', component: BlackboardComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'registrarConductor', component: RegistroDeConductorComponent },
+  { path: 'gastosVehiculo', component: GastosVehiculoComponent },
+  { path: 'reportes', component: ReportesComponent },
+  { path: 'registroVehiculo', component: RegistroVehiculosComponent },
 ];
 
 
@@ -23,7 +31,11 @@ const routes: Routes = [
     LoginComponent,
     BlackboardComponent,
     UsersComponent,
-    MenuComponent
+    MenuComponent,
+    RegistroDeConductorComponent,
+    GastosVehiculoComponent,
+    ReportesComponent,
+    RegistroVehiculosComponent
   ],
   imports: [
     BrowserModule,

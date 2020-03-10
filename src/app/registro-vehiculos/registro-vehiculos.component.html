@@ -1,0 +1,89 @@
+<app-menu></app-menu>
+<br>
+<div class="container">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#registrarUsuario">Registrar</button>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id_vehiculo</th>
+            <th scope="col">nombre</th>
+            <th scope="col">placaVehiculo</th>
+            <th scope="col">Cilindraje</th>
+            <th scope="col">color</th>
+            <th scope="col">Modelo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cars of vehiculos">
+            <td>{{cars.Id_vehiculo}}</td>
+            <td>{{cars.nombre}}</td>
+            <td>{{cars.placaVehiculo}}</td>
+            <td>{{cars.Cilindraje}}</td>
+            <td>{{cars.color}}</td>
+            <td>{{cars.Modelo}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="registrarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label >Id_vehiculo</label>
+              <input #Id_vehiculo type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >nombre</label>
+              <input #nombre  type="text" class="form-control" />
+            </div>
+
+
+
+            <div class="form-group">
+              <label >placaVehiculo</label>
+              <input #placaVehiculo type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >Cilindraje <address></address> </label>
+              <input #Cilindraje type="email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >color</label>
+              <input #color type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >Modelo</label>
+              <input #Modelo type="text" class="form-control" />
+            </div>
+          
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="creavehiculo(
+            Id_vehiculo.value,
+            nombre.value,
+            placaVehiculo.value,
+            Cilindraje.value,
+            color.value,
+            Modelo.value
+          )">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>

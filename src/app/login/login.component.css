@@ -1,4 +1,5 @@
 #background {
+  background-image: url('src/assets/logo.jpg');
     position: fixed;
      top: 50%;
      left: 50%;
@@ -9,6 +10,13 @@
      z-index: -100;
      -webkit-transform: translateX(-50%) translateY(-50%);
      transform: translateX(-50%) translateY(-50%);
-     background-image: url('src/assets/login-background.jpg');
-     background-size: cover;
+     /* background-image: url('src/assets/login-background.jpg');
+     background-size: cover; */
+
+   }
+   #formBackground{
+     background-color: rgb(63, 105, 139);
+   }
+   #btnColor{
+     background-color: rgb(68, 0, 255);
    }
