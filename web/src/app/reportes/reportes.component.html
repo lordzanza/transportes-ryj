@@ -1,0 +1,127 @@
+<app-menu></app-menu>
+<br>
+<div class="container">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#registrarReportes">Registrar</button>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ACPM</th>
+            <th scope="col">peajes</th>
+            <th scope="col">seguro_carro</th>
+            <th scope="col">seguro_trabajadores</th>
+            <th scope="col">liquidacion_anual</th>
+            <th scope="col">plan_celular</th>
+            <th scope="col">sueldo_trabajadores</th>
+            <th scope="col">dotacion_trabajadores</th>
+            <th scope="col">cotas_llantas</th>
+            <th scope="col">cambio_aceite</th>
+            <th scope="col">dotacion_trabajadores</th>
+            <th scope="col">prima_6meses</th>
+            <th scope="col">seguro_tecnomecanica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reportes">
+            <td>{{reportes.ACPM}}</td>
+            <td>{{reportes.peajes}}</td>
+            <td>{{reportes.seguro_carro}}</td>
+            <td>{{reportes.seguro_trabajadores}}</td>
+            <td>{{reportes.liquidacion_anual}}</td>
+            <td>{{reportes.plan_celular}}</td>
+            <td>{{reportes.sueldo_trabajadores}}</td>
+            <td>{{reportes.dotacion_trabajadores}}</td>
+            <td>{{reportes.cotas_llantas}}</td>
+            <td>{{reportes.cambio_aceite}}</td>
+            <td>{{reportes.dotacion_trabajadores}}</td>
+            <td>{{reportes.prima_6meses}}</td>
+            <td>{{reportes.seguro_tecnomecanica}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="registrarReportes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+          
+            <label >ACPM</label>
+              <input #ACPM type="int" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >peajes</label>
+              <input #peajes  type="int" class="form-control" />
+            </div>
+                 <div class="form-group">
+              <label >seguro_carro</label>
+              <input #seguro_carro type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >seguro_trabajadores <address></address> </label>
+              <input #seguro_trabajadores type="float" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >liquidacion_anual</label>
+              <input #liquidacion_anual type="float" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >plan_celular</label>
+              <input #plan_celular type="float" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label >sueldo_trabajadores</label>
+                <input #sueldo_trabajadores type="float" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label >cotas_llantas</label>
+                <input #cotas_llantas type="int" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label >cambio_aceite</label>
+                <input #cambio_aceite type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label >dotacion_trabajadores</label>
+                <input #dotacion_trabajadores type="float" class="form-control" />
+              </div> 
+              <div class="form-group">
+                <label >prima_6meses</label>
+                <input #prima_6meses type="int" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label >seguro_tecnomecanica</label>
+                <input #seguro_tecnomecanica type="float" class="form-control" />
+              </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="reportes(
+            seguro_carro.value,
+            seguro_trabajadores.value,
+            liquidacion_anual.value,
+            plan_celular.value,
+            sueldo_trabajadores.value,
+            cotas_llantas.value,
+            dotacion_trabajadores.value,
+            prima_6meses.value,
+            seguro_tecnomecanica.value
+          )">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,5 +1,5 @@
 #background {
-    background-color:rgb(45,73,77) ;
+    background-color:rgb(245, 9, 9) ;
       position: fixed;
        top: 50%;
        left: 50%;
@@ -12,5 +12,6 @@
        transform: translateX(-50%) translateY(-50%);
        background-image: url('src/assets/logo.jpg');
        background-size: cover;
+       
   
      }

@@ -1,0 +1,88 @@
+<app-menu></app-menu>
+<br>
+<div class="container">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#registrarUsuario">Registrar</button>
+  <br>
+  <br>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">acpm</th>
+        <th scope="col">peajes</th>
+        <th scope="col">seguro_Carro</th>
+        <th scope="col">cotas_llantas</th>
+        <th scope="col">cambio_aceite</th>
+        <th scope="col">seguro_tecnomecanica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gastos_vehiculo of gastosvehiculo">
+        <td>{{gastos_vehiculo.acpm}}</td>
+        <td>{{gastos_vehiculo.peajes}}</td>
+        <td>{{gastos_vehiculo.seguro_carro}}</td>
+        <td>{{gastos_vehiculo.cotas_llantas}}</td>
+        <td>{{gastos_vehiculo.cambio_aceite}}</td>
+        <td>{{gastos_vehiculo.seguro_tecnomecanica}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="registrarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>acpm</label>
+            <input #acpm type="text" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Peajes</label>
+            <input #Peajes type="int" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>seguro_carro</label>
+            <input #seguro_carro type="int" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>cotas_llantas</label>
+            <input #cotas_llantas type="text" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>cambio_aceite <address></address> </label>
+            <input #cambio_aceite type="date" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>seguro_tecnomecanica</label>
+            <input #seguro_tecnomecanica type="text" class="form-control" />
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="guardarReporteVehiculo(
+          acpm.value,
+            Peajes.value,
+            seguro_carro.value,
+            cotas_llantas.value,
+            cambio_aceite.value,
+            seguro_tecnomecanica.value
+          )">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
