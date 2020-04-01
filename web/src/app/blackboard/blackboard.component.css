@@ -1,17 +1,18 @@
 #background {
-    background-color:rgb(245, 9, 9) ;
-      position: fixed;
-       top: 50%;
-       left: 50%;
-       min-width: 100%;
-       min-height: 100%;
-       width: auto;
-       height: auto;
-       z-index: -100;
-       -webkit-transform: translateX(-50%) translateY(-50%);
-       transform: translateX(-50%) translateY(-50%);
-       background-image: url('src/assets/logo.jpg');
-       background-size: cover;
-       
-  
-     }
+  background-color:rgb(243, 243, 243) ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-image: url('src/assets/logo.jpg');
+  background-size: cover;
+}
+.jumbotron {
+  background: none;
+}

@@ -10,7 +10,6 @@ app.use(cors())
 // body parser
 app.use(bodyParser.json({ limit: '100mb' }))
 app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }))
-app.use(bodyParser.json({ type: '*/*' }))
 app.set('json spaces', 4)
 app.use('/static', express.static('public'))
 
@@ -20,8 +19,9 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "yourusername",
-  password: "yourpassword"
+  database: "transportesrj",
+  user: "transportes",
+  password: ""
 });
 
 con.connect(function(err) {
@@ -29,12 +29,12 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-app.post('/crearUsuario', (err, res) =>{
+app.post('/vehiculo', (err, res) =>{
     if(err) console.log("Error")
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
-        var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
+        var sql = "insert into vehiculo (decripcion, placa, cilindraje, color, modelo) values ('tracto-mula','FAO267',50000, 'azul', 2012)";
         con.query(sql, function (err, result) {
           if (err) throw err;
           console.log("1 record inserted");
@@ -43,8 +43,8 @@ app.post('/crearUsuario', (err, res) =>{
 })
 
 app.get('/', (err, res) =>{
-    if(err) console.log("Error")
-    res.send({response: "Correcto"})
+    if(err) res.send({response: err.body})
+    else res.send({response: "Correcto"})
 })
 
 app.listen(process.env.PORT || 5000, (err, req) => {

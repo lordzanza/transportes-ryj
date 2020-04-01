@@ -1,38 +1,39 @@
 <app-menu></app-menu>
-<br>
 <div class="container">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#registrarUsuario">Registrar</button>
-    <br>
-    <br>
-    <br>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">nombres</th>
-            <th scope="col">apellidos</th>
-            <th scope="col">tipoDeDocumento</th>
-            <th scope="col">documento</th>
-            <th scope="col">correo</th>
-            <th scope="col">direccion</th>
-            <th scope="col">contrasena</th>
-            <th scope="col">ciudad</th>
-            <th scope="col">tipoDeUsaurio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let users of usuarios">
-            <td>{{users.nombres}}</td>
-            <td>{{users.apellidos}}</td>
-            <td>{{users.tipoDeDocumento}}</td>
-            <td>{{users.documento}}</td>
-            <td>{{users.correo}}</td>
-            <td>{{users.direccion}}</td>
-            <td>{{users.contrasena}}</td>
-            <td>{{users.ciudad}}</td>
-            <td>{{users.tipoDeUsaurio}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <br>
+  <br>
+  <br>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#registrarUsuario">Registrar</button>
+  <br>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">nombres</th>
+        <th scope="col">apellidos</th>
+        <th scope="col">tipoDeDocumento</th>
+        <th scope="col">documento</th>
+        <th scope="col">correo</th>
+        <th scope="col">direccion</th>
+        <th scope="col">contrasena</th>
+        <th scope="col">ciudad</th>
+        <th scope="col">tipoDeUsaurio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of usuarios">
+        <td>{{users.nombres}}</td>
+        <td>{{users.apellidos}}</td>
+        <td>{{users.tipoDeDocumento}}</td>
+        <td>{{users.documento}}</td>
+        <td>{{users.correo}}</td>
+        <td>{{users.direccion}}</td>
+        <td>{{users.contrasena}}</td>
+        <td>{{users.ciudad}}</td>
+        <td>{{users.tipoDeUsaurio}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
   
