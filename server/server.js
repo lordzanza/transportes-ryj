@@ -8,8 +8,7 @@ var app = express()
 app.use(cors())
 
 // body parser
-app.use(bodyParser.json({ limit: '100mb' }))
-app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }))
+app.use(express.json())
 app.set('json spaces', 4)
 app.use('/static', express.static('public'))
 
@@ -24,27 +23,28 @@ var con = mysql.createConnection({
   password: ""
 });
 
-con.connect(function(err) {
+con.connect((err)=>{
   if (err) throw err;
   console.log("Connected!");
 });
 
-app.post('/vehiculo', (err, res) =>{
-    if(err) console.log("Error")
-    con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-        var sql = "insert into vehiculo (decripcion, placa, cilindraje, color, modelo) values ('tracto-mula','FAO267',50000, 'azul', 2012)";
-        con.query(sql, function (err, result) {
-          if (err) throw err;
-          console.log("1 record inserted");
-        });
-      });
+app.get('/', (req, res) =>{
+     res.send(req.body) 
 })
 
-app.get('/', (err, res) =>{
-    if(err) res.send({response: err.body})
-    else res.send({response: "Correcto"})
+app.post('/vehiculo', (req, res) =>{
+  console.log(req.body)
+  con.query("insert into vehiculo set ?", req.body, (err, result)=> {
+    if(result && result.affectedRows) {
+      const body = { placa: req.body.placa }
+      console.log(body)
+      res.status(201).send(body)
+    } else {
+      const body = { error: err.message }
+      console.log(body)
+      res.status(400).send(body)
+    }
+  })
 })
 
 app.listen(process.env.PORT || 5000, (err, req) => {
