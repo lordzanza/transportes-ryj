@@ -33,7 +33,7 @@ CREATE TABLE `usuario` (
   `apellidos` varchar(20) NOT NULL,                            
   `tipo_documento` varchar(2) NOT NULL,                        
   `documento` varchar(20) NOT NULL,                            
-  `correo` varchar(20) NOT NULL,                               
+  `correo` varchar(40) NOT NULL,
   `direccion` varchar(20) NOT NULL,   
   `ciudad` varchar(20) NOT NULL,                           
   `usuario` varchar(20) NOT NULL,                              

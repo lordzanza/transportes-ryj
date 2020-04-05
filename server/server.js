@@ -1,52 +1,106 @@
 const express  = require('express')
-const bodyParser = require('body-parser')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
-var app = express()
-// cors
+// Crear una aplicacion servidor (o una API) para los rest endpoints
+const app = express()
+// CORS, para seguridad, cuando el back-end esta en un servidor o pc distito al del front-end
 app.use(cors())
 
-// body parser
+// body parser - analizador del formato del body del request & response (solicitud y respuesta)
 app.use(express.json())
 app.set('json spaces', 4)
 app.use('/static', express.static('public'))
 
+// dependencia para conectar a BD
+const mysql = require('mysql')
 
-//mysql con
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
+// fuente de datos
+const conex = mysql.createConnection({
   host: "localhost",
-  database: "transportesrj",
-  user: "transportes",
-  password: ""
-});
-
-con.connect((err)=>{
-  if (err) throw err;
-  console.log("Connected!");
-});
-
-app.get('/', (req, res) =>{
-     res.send(req.body) 
+  port: 4306,
+  user: "root", //transportes
+  password: "pr0y3ct05",
+  database: "transportesrj"
 })
 
-app.post('/vehiculo', (req, res) =>{
-  console.log(req.body)
-  con.query("insert into vehiculo set ?", req.body, (err, result)=> {
-    if(result && result.affectedRows) {
-      const body = { placa: req.body.placa }
-      console.log(body)
-      res.status(201).send(body)
+// iniciar conexion a fuente de datos
+conex.connect(
+  () => console.log("Connected to database!")
+)
+
+// levantar el servidor, escuchando al puerto 5000
+app.listen(parseInt(process.env.PORT) || 5000,
+  () => console.log('Server running at port:5000')
+)
+
+// ...ENDPOINTS...
+
+app.get('/', (input, output) =>{
+  output.send(input.body)
+})
+
+app.get('/vehiculos', (input, output) =>{
+  console.log("get /vehiculos ...", input.body)
+  conex.query("select * from vehiculo order by placa", (error, results)=> {
+    if (results) {
+      console.log(results)
+      output.send(results)
     } else {
-      const body = { error: err.message }
+      const body = { error: error.message }
       console.log(body)
-      res.status(400).send(body)
+      output.status(400).send(body)
     }
   })
 })
 
-app.listen(process.env.PORT || 5000, (err, req) => {
-    console.log('Server running')
+app.post('/vehiculos', (input, output) =>{
+  console.log("post /vehiculos ...", input.body)
+  conex.query("insert into vehiculo set ?", input.body, (error, results)=> {
+    if (results && results.affectedRows) {
+      const body = {
+        placa: input.body.placa
+      }
+      console.log(body)
+      output.status(201).send(body)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
+})
+
+app.get('/usuarios', (input, output) =>{
+  console.log("get /usuarios ...", input.body)
+  conex.query("select * from usuario order by nombres, apellidos", (error, results)=> {
+    if (results) {
+      console.log(results)
+      output.send(results)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
+})
+
+app.post('/usuarios', (input, output) =>{
+  console.log("post /usuarios ...", input.body)
+  conex.query("insert into usuario set ?", input.body, (error, results)=> {
+    if (results && results.affectedRows) {
+      const body = {
+        tipo_documento: input.body.tipo_documento,
+        documento:      input.body.documento,
+        nombres:        input.body.nombres,
+        apellidos:      input.body.apellidos
+      }
+      console.log(body)
+      output.status(201).send(body)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
 })
