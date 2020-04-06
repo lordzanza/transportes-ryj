@@ -56,8 +56,8 @@ export class PersistenceService {
         (error) => console.error(error.message));
   }
 
-  postGastos(gastos: any, next?: (value: any) => void): Subscription {
-    return this.http.post<any>(environment.baseUrl + '/gastos', gastos)
+  postGastos(gasto: any, next?: (value: any) => void): Subscription {
+    return this.http.post<any>(environment.baseUrl + '/gastos', gasto)
       .subscribe(next,
         (error) => alert(error.message));
   }

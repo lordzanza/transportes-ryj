@@ -103,3 +103,35 @@ app.post('/usuarios', (input, output) =>{
     }
   })
 })
+
+app.get('/licencias', (input, output) =>{
+  console.log("get /licencias ...", input.body)
+  conex.query("select * from licencia_conductor order by id_conductor", (error, results)=> {
+    if (results) {
+      console.log(results)
+      output.send(results)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
+})
+
+app.post('/licencias', (input, output) =>{
+  console.log("post /licencias ...", input.body)
+  conex.query("insert into licencia_conductor set ?", input.body, (error, results)=> {
+    if (results && results.affectedRows) {
+      const body = {
+        id_conductor: input.body.id_conductor,
+        categoria:    input.body.categoria
+      }
+      console.log(body)
+      output.status(201).send(body)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
+})
