@@ -18,9 +18,8 @@ const mysql = require('mysql')
 // fuente de datos
 const conex = mysql.createConnection({
   host: "localhost",
-  port: 4306,
-  user: "root", //transportes
-  password: "pr0y3ct05",
+  user: "transportes",
+  password: "",
   database: "transportesrj"
 })
 

@@ -17,8 +17,8 @@ export class UsersComponent implements OnInit {
   crearUsuario(nombres: string, apellidos: string, tipo_documento: string, documento: string, correo: string,
     direccion: string, ciudad: string, usuario: string, clave: string, tipo: string, estado: string, numero_id: number) {
     const user: any = { nombres, apellidos, tipo_documento, documento, correo, direccion, ciudad, usuario, clave, tipo, estado, numero_id };
-    this.persistService.postVehiculos(user, (value) => {
-      this.persistService.getVehiculos(this.usuarios);
+    this.persistService.postUsuarios(user, (value) => {
+      this.persistService.getUsuarios(this.usuarios);
       alert(`El usuario ${value.nombres} ${value.apellidos},
         con identificacion ${value.tipo_documento} ${value.documento} fue registrado con exito!`);
     });
