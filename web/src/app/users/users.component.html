@@ -9,34 +9,40 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">nombres</th>
-        <th scope="col">apellidos</th>
-        <th scope="col">tipoDeDocumento</th>
-        <th scope="col">documento</th>
-        <th scope="col">correo</th>
-        <th scope="col">direccion</th>
-        <th scope="col">contrasena</th>
-        <th scope="col">ciudad</th>
-        <th scope="col">tipoDeUsaurio</th>
+        <th scope="col">Num</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Tipo de Documento</th>
+        <th scope="col">Numero de Documento</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Clave</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Numero ID</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let users of usuarios">
-        <td>{{users.nombres}}</td>
-        <td>{{users.apellidos}}</td>
-        <td>{{users.tipoDeDocumento}}</td>
-        <td>{{users.documento}}</td>
-        <td>{{users.correo}}</td>
-        <td>{{users.direccion}}</td>
-        <td>{{users.contrasena}}</td>
-        <td>{{users.ciudad}}</td>
-        <td>{{users.tipoDeUsaurio}}</td>
+      <tr *ngFor="let user of usuarios">
+        <td>{{user.id}}</td>
+        <td>{{user.nombres}}</td>
+        <td>{{user.apellidos}}</td>
+        <td>{{user.tipo_documento}}</td>
+        <td>{{user.documento}}</td>
+        <td>{{user.correo}}</td>
+        <td>{{user.direccion}}</td>
+        <td>{{user.ciudad}}</td>
+        <td>{{user.usuario}}</td>
+        <td>****</td>
+        <td>{{user.tipo}}</td>
+        <td>{{user.estado}}</td>
+        <td>{{user.numero_id}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-
-  
   <!-- Modal -->
   <div class="modal fade" id="registrarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -57,19 +63,16 @@
               <label >Apellidos</label>
               <input #apellidos  type="text" class="form-control" />
             </div>
-
             <div class="form-group">
-            <select #tipoDeDocumento>
-              <option value="">Tipo de documento</option>
-              <option value="cc">cc</option>
-              <option value="ci">ci</option>
-              <option value="pep">pep</option>
-            </select>
+              <label >Tipo de Documento</label>
+              <select #tipo_documento>
+                <option value="CC">Cedula Ciudadania</option>
+                <option value="CE">Cedula Extranjeria</option>
+                <option value="TI">Tarjeta de Identidad</option>
+              </select>
             </div>
-
-
             <div class="form-group">
-              <label >N° Documento</label>
+              <label >Numero de Documento</label>
               <input #documento type="text" class="form-control" />
             </div>
             <div class="form-group">
@@ -81,23 +84,36 @@
               <input #direccion type="text" class="form-control" />
             </div>
             <div class="form-group">
-              <label >Password</label>
-              <input #contrasena type="password" class="form-control" />
-            </div>
-            <div class="form-group">
               <label >Ciudad</label>
               <input #ciudad type="text" class="form-control" />
             </div>
-
-            
             <div class="form-group">
-              <select #tipoDeUsaurio >
-                <option value="">Tipo de usuario</option>
-                <option value="admin">Administrador</option>
-                <option value="empleado">Empleado</option>
+              <label >Usuario</label>
+              <input #usuario type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >Clave</label>
+              <input #clave type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label >Tipo de Usuario</label>
+              <select #tipo >
+                <option value="ADM">Administrador</option>
+                <option value="CON">Conductor</option>
+                <option value="AUX">Auxiliar</option>
               </select>
               </div>
-            
+              <div class="form-group">
+                <label >Estado</label>
+                <select #estado >
+                  <option value="ACTIVO">Activo</option>
+                  <option value="INACTIVO">Inactivo</option>
+                </select>
+                </div>
+              <div class="form-group">
+                <label >Numero ID</label>
+                <input #numero_id type="text" class="form-control" />
+              </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -105,15 +121,18 @@
           <button type="button" class="btn btn-primary" (click)="crearUsuario(
             nombres.value,
             apellidos.value,
-            tipoDeDocumento.value,
+            tipo_documento.value,
             documento.value,
             correo.value,
             direccion.value,
-            contrasena.value,
             ciudad.value,
-            tipoDeUsaurio.value
+            usuario.value,
+            clave.value,
+            tipo.value,
+            estado.value,
+            numero_id.value
           )">Guardar</button>
-        </div>
+          </div>
       </div>
     </div>
   </div>

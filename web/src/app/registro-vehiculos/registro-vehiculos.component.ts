@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersistenceService } from '../services/persistence.service';
 
 @Component({
   selector: 'app-registro-vehiculos',
@@ -7,30 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroVehiculosComponent implements OnInit {
   vehiculos: any = [];
-  constructor() { }
+  constructor(private persistService: PersistenceService) { }
 
-  creavehiculo(
-    Id_vehiculo,
-    nombre,
-    placaVehiculo,
-    Cilindraje,
-    color,
-    Modelo
-  ){
-    
-  var vehiculoModel = {
-    "Id_vehiculo": Id_vehiculo,
-    "nombre": nombre,
-    "placaVehiculo": placaVehiculo,
-    "Cilindraje": Cilindraje,
-    "color": color,
-    "Modelo": Modelo
-    }
-    this.vehiculos.push(vehiculoModel)
-    console.log(this.vehiculos)
-  }
-  
   ngOnInit() {
+    this.persistService.getVehiculos(this.vehiculos);
+  }
+
+  crearVehiculo(descripcion: string, placa: string, cilindraje: number, color: string, modelo: number) {
+    this.persistService.postVehiculos({ descripcion, placa, cilindraje, color, modelo }, (value) => {
+      this.persistService.getVehiculos(this.vehiculos);
+      alert(`El vehiculo con placa ${value.placa} fue registrado con exito!`);
+    });
   }
 
 }

@@ -3,31 +3,31 @@
   <br>
   <br>
   <br>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#registrarVehiculo">Registrar</button>
-    <br>
-    <br>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id_vehiculo</th>
-            <th scope="col">descripcion</th>
-            <th scope="col">placaVehiculo</th>
-            <th scope="col">Cilindraje</th>
-            <th scope="col">color</th>
-            <th scope="col">Modelo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let cars of vehiculos">
-            <td>{{cars.Id_vehiculo}}</td>
-            <td>{{cars.descripcion}}</td>
-            <td>{{cars.placaVehiculo}}</td>
-            <td>{{cars.Cilindraje}}</td>
-            <td>{{cars.color}}</td>
-            <td>{{cars.Modelo}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#registrarVehiculo">Registrar</button>
+  <br>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Num</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Cilindraje</th>
+        <th scope="col">Color</th>
+        <th scope="col">Modelo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of vehiculos">
+        <td>{{car.id}}</td>
+        <td>{{car.descripcion}}</td>
+        <td>{{car.placa}}</td>
+        <td>{{car.cilindraje}}</td>
+        <td>{{car.color}}</td>
+        <td>{{car.modelo}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
   
@@ -44,45 +44,35 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label >Id_vehiculo</label>
-              <input #Id_vehiculo type="text" class="form-control" />
-            </div>
-            <div class="form-group">
               <label >descripcion</label>
               <input #descripcion  type="text" class="form-control" />
             </div>
-
-
-
             <div class="form-group">
-              <label >placaVehiculo</label>
-              <input #placaVehiculo type="text" class="form-control" />
+              <label >placa</label>
+              <input #placa type="text" class="form-control" />
             </div>
             <div class="form-group">
-              <label >Cilindraje <address></address> </label>
-              <input #Cilindraje type="int" class="form-control" />
+              <label >cilindraje <address></address> </label>
+              <input #cilindraje type="int" class="form-control" />
             </div>
             <div class="form-group">
               <label >color</label>
               <input #color type="text" class="form-control" />
             </div>
             <div class="form-group">
-              <label >Modelo</label>
-              <input #Modelo type="text" class="form-control" />
+              <label >modelo</label>
+              <input #modelo type="text" class="form-control" />
             </div>
-          
-            
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="creavehiculo(
-            Id_vehiculo.value,
+          <button type="button" class="btn btn-primary" (click)="crearVehiculo(
             descripcion.value,
-            placaVehiculo.value,
-            Cilindraje.value,
+            placa.value,
+            cilindraje.value,
             color.value,
-            Modelo.value
+            modelo.value
           )">Guardar</button>
         </div>
       </div>
