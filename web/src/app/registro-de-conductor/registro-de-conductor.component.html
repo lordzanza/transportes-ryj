@@ -9,28 +9,19 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">nombres</th>
-            <th scope="col">apellidos</th>
-            <th scope="col">tipoDeDocumento</th>
-            <th scope="col">documento</th>
-            <th scope="col">correo</th>
-            <th scope="col">direccion</th>
-            <th scope="col">contrasena</th>
-            <th scope="col">ciudad</th>
-            <th scope="col">tipoDeUsaurio</th>
+            <th scope="col">Num</th>
+            <th scope="col">Num Conductor</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Restricciones</th>
+
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let users of usuarios">
-            <td>{{users.nombres}}</td>
-            <td>{{users.apellidos}}</td>
-            <td>{{users.tipoDeDocumento}}</td>
-            <td>{{users.documento}}</td>
-            <td>{{users.correo}}</td>
-            <td>{{users.direccion}}</td>
-            <td>{{users.contrasena}}</td>
-            <td>{{users.ciudad}}</td>
-            
+          <tr *ngFor="let lic of licencias">
+            <td>{{lic.id}}</td>
+            <td>{{lic.id_conductor}}</td>
+            <td>{{lic.categoria}}</td>
+            <td>{{lic.restricciones}}</td>
           </tr>
         </tbody>
       </table>
@@ -50,58 +41,26 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label >Nombres</label>
-              <input #nombres type="text" class="form-control" />
+              <label >Num Conductor</label>
+              <input #id_conductor type="int" class="form-control" />
             </div>
             <div class="form-group">
-              <label >Apellido</label>
-              <input #apellidos  type="text" class="form-control" />
-            </div>
-
-            <div class="form-group">
-            <select #tipoDeDocumento>
-              <option value="">Tipo de documento</option>
-              <option value="cc">cc</option>
-              <option value="ci">ci</option>
-              <option value="pep">pep</option>
-            </select>
-            </div>
-
-
-            <div class="form-group">
-              <label >N° Documento</label>
-              <input #documento type="text" class="form-control" />
+              <label >Categoria</label>
+              <input #categoria  type="text" class="form-control" />
             </div>
             <div class="form-group">
-              <label >Correo <address></address> </label>
-              <input #correo type="email" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label >Direccion</label>
-              <input #direccion type="text" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label >Password</label>
-              <input #contrasena type="password" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label >Ciudad</label>
-              <input #ciudad type="text" class="form-control" />
+              <label >Restricciones</label>
+              <input #restricciones type="text" class="form-control" />
             </div>
 
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="crearUsuario(
-            nombres.value,
-            apellidos.value,
-            tipoDeDocumento.value,
-            documento.value,
-            correo.value,
-            direccion.value,
-            contrasena.value,
-            ciudad.value
+          <button type="button" class="btn btn-primary" (click)="crearLicencia(
+            id_conductor.value,
+            categoria.value,
+            restricciones.value
           )">Guardar</button>
         </div>
       </div>

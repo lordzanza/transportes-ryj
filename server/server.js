@@ -1,4 +1,4 @@
-const express  = require('express')
+const express = require('express')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
@@ -35,13 +35,13 @@ app.listen(parseInt(process.env.PORT) || 5000,
 
 // ...ENDPOINTS...
 
-app.get('/', (input, output) =>{
+app.get('/', (input, output) => {
   output.send(input.body)
 })
 
-app.get('/vehiculos', (input, output) =>{
+app.get('/vehiculos', (input, output) => {
   console.log("get /vehiculos ...", input.body)
-  conex.query("select * from vehiculo order by placa", (error, results)=> {
+  conex.query("select * from vehiculo order by placa", (error, results) => {
     if (results) {
       console.log(results)
       output.send(results)
@@ -53,9 +53,9 @@ app.get('/vehiculos', (input, output) =>{
   })
 })
 
-app.post('/vehiculos', (input, output) =>{
+app.post('/vehiculos', (input, output) => {
   console.log("post /vehiculos ...", input.body)
-  conex.query("insert into vehiculo set ?", input.body, (error, results)=> {
+  conex.query("insert into vehiculo set ?", input.body, (error, results) => {
     if (results && results.affectedRows) {
       const body = {
         placa: input.body.placa
@@ -70,9 +70,9 @@ app.post('/vehiculos', (input, output) =>{
   })
 })
 
-app.get('/usuarios', (input, output) =>{
+app.get('/usuarios', (input, output) => {
   console.log("get /usuarios ...", input.body)
-  conex.query("select * from usuario order by nombres, apellidos", (error, results)=> {
+  conex.query("select * from usuario order by nombres, apellidos", (error, results) => {
     if (results) {
       console.log(results)
       output.send(results)
@@ -84,15 +84,15 @@ app.get('/usuarios', (input, output) =>{
   })
 })
 
-app.post('/usuarios', (input, output) =>{
+app.post('/usuarios', (input, output) => {
   console.log("post /usuarios ...", input.body)
-  conex.query("insert into usuario set ?", input.body, (error, results)=> {
+  conex.query("insert into usuario set ?", input.body, (error, results) => {
     if (results && results.affectedRows) {
       const body = {
         tipo_documento: input.body.tipo_documento,
-        documento:      input.body.documento,
-        nombres:        input.body.nombres,
-        apellidos:      input.body.apellidos
+        documento: input.body.documento,
+        nombres: input.body.nombres,
+        apellidos: input.body.apellidos
       }
       console.log(body)
       output.status(201).send(body)
@@ -104,9 +104,9 @@ app.post('/usuarios', (input, output) =>{
   })
 })
 
-app.get('/licencias', (input, output) =>{
+app.get('/licencias', (input, output) => {
   console.log("get /licencias ...", input.body)
-  conex.query("select * from licencia_conductor order by id_conductor", (error, results)=> {
+  conex.query("select * from licencia_conductor order by id_conductor", (error, results) => {
     if (results) {
       console.log(results)
       output.send(results)
@@ -118,13 +118,46 @@ app.get('/licencias', (input, output) =>{
   })
 })
 
-app.post('/licencias', (input, output) =>{
+app.post('/licencias', (input, output) => {
   console.log("post /licencias ...", input.body)
-  conex.query("insert into licencia_conductor set ?", input.body, (error, results)=> {
+  conex.query("insert into licencia_conductor set ?", input.body, (error, results) => {
     if (results && results.affectedRows) {
       const body = {
         id_conductor: input.body.id_conductor,
-        categoria:    input.body.categoria
+        categoria: input.body.categoria
+      }
+      console.log(body)
+      output.status(201).send(body)
+    } else {
+      const body = { error: error.message }
+      console.log(body)
+      output.status(400).send(body)
+    }
+  })
+})
+
+app.get('/gastos', (input, output) => {
+  console.log("get /gastos ...", input.body)
+  conex.query("select * from gastos_vehiculos_mensual order by fecha_gasto desc, costo_gasto desc",
+    (error, results) => {
+      if (results) {
+        console.log(results)
+        output.send(results)
+      } else {
+        const body = { error: error.message }
+        console.log(body)
+        output.status(400).send(body)
+      }
+    })
+})
+
+app.post('/gastos', (input, output) => {
+  console.log("post /gastos ...", input.body)
+  conex.query("insert into gastos_vehiculos_mensual set ?", input.body, (error, results) => {
+    if (results && results.affectedRows) {
+      const body = {
+        tipo_gasto: input.body.tipo_gasto,
+        costo_gasto: input.body.costo_gasto
       }
       console.log(body)
       output.status(201).send(body)

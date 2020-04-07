@@ -1,41 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { PersistenceService } from '../services/persistence.service';
+
 @Component({
   selector: 'app-registro-de-conductor',
   templateUrl: './registro-de-conductor.component.html',
   styleUrls: ['./registro-de-conductor.component.css']
 })
 export class RegistroDeConductorComponent implements OnInit {
-  usuarios: any = [];
-  constructor() { }
-
-  crearUsuario(
-    nombres,
-    apellidos,
-    tipoDeDocumento,
-    documento,
-    correo,
-    direccion,
-    contrasena,
-    ciudad,
-    tipoDeUsaurio
-  ){
-   
-  var usauriosModel = {
-    "nombres": nombres,
-    "apellidos": apellidos,
-    "tipoDeDocumento": tipoDeDocumento,
-    "documento": documento,
-    "correo": correo,
-    "direccion": direccion,
-    "contrasena": contrasena,
-    "ciudad": ciudad,
-    "tipoDeUsaurio": tipoDeUsaurio
-    }
-    console.log(usauriosModel)
-    this.usuarios.push(usauriosModel)
-  }
+  licencias: any = [];
+  constructor(private persistService: PersistenceService) { }
 
   ngOnInit() {
+    this.persistService.getLicencias(this.licencias);
   }
 
+  crearLicencia(id_conductor: number, categoria: string, restricciones: string){
+const licencia ={id_conductor, categoria, restricciones};
+    this.persistService.postLicencias(licencia, (value) => {
+      this.persistService.getLicencias(this.licencias);
+      alert(`Para el conductor con el numero ${value.id_conductor}, Se ha registrado la licencia con categoria ${value.categoria} con exito!`);
+    });
+  }
 }
