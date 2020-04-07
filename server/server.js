@@ -46,9 +46,8 @@ app.get('/vehiculos', (input, output) => {
       console.log(results)
       output.send(results)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -63,9 +62,8 @@ app.post('/vehiculos', (input, output) => {
       console.log(body)
       output.status(201).send(body)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -77,9 +75,8 @@ app.get('/usuarios', (input, output) => {
       console.log(results)
       output.send(results)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -97,9 +94,8 @@ app.post('/usuarios', (input, output) => {
       console.log(body)
       output.status(201).send(body)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -111,9 +107,8 @@ app.get('/licencias', (input, output) => {
       console.log(results)
       output.send(results)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -129,9 +124,8 @@ app.post('/licencias', (input, output) => {
       console.log(body)
       output.status(201).send(body)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
@@ -144,9 +138,8 @@ app.get('/gastos', (input, output) => {
         console.log(results)
         output.send(results)
       } else {
-        const body = { error: error.message }
-        console.log(body)
-        output.status(400).send(body)
+        console.log([error.message])
+        output.status(400).send([error.message])
       }
     })
 })
@@ -162,9 +155,21 @@ app.post('/gastos', (input, output) => {
       console.log(body)
       output.status(201).send(body)
     } else {
-      const body = { error: error.message }
-      console.log(body)
-      output.status(400).send(body)
+      console.log([error.message])
+      output.status(400).send([error.message])
+    }
+  })
+})
+
+app.get('/historial', (input, output) => {
+  console.log("get /historial ...", input.body)
+  conex.query("select * from historial_gastos_vehiculo order by id desc", (error, results) => {
+    if (results) {
+      console.log(results)
+      output.send(results)
+    } else {
+      console.log([error.message])
+      output.status(400).send([error.message])
     }
   })
 })
