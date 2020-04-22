@@ -11,7 +11,8 @@ import { RegistroDeConductorComponent } from './registro-de-conductor/registro-d
 import { GastosVehiculoComponent } from './gastos-vehiculo/gastos-vehiculo.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { RegistroVehiculosComponent } from './registro-vehiculos/registro-vehiculos.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -44,7 +45,11 @@ const routes: Routes = [
     ),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

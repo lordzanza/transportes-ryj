@@ -16,17 +16,17 @@
             <a class="nav-link" href="" [routerLink]="[ '/registrarConductor' ]" >Registrar Licencia <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="" [routerLink]="[ '/gastosVehiculo' ]">Gastos de vehiculo <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="" [routerLink]="[ '/registroVehiculo' ]">Registrar Vehiculo <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="" [routerLink]="[ '/registroVehiculo' ]">Registrar Vehiculo <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="" [routerLink]="[ '/gastosVehiculo' ]">Gastos de vehiculo <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="" [routerLink]="[ '/reportes' ]">Reporte mensual de gastos <span class="sr-only">(current)</span></a>
           </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="[ '/login' ]">Cerrar sesión</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()">Cerrar sesión</button>
       </form>
     </div>
   </nav>

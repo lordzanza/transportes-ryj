@@ -10,10 +10,16 @@ export class PersistenceService {
 
   constructor(private http: HttpClient) { }
 
+  postTokens(login: any, next?: (value: any) => void): Subscription {
+    return this.http.post<any>(environment.baseUrl + '/tokens', login)
+      .subscribe(next,
+        (error) => alert(error.error));
+  }
+
   getUsuarios(lista: any[]): Subscription {
-    lista.length = 0;
+    lista.length = 0; // limpiar lista
     return this.http.get<any>(environment.baseUrl + '/usuarios')
-      .subscribe((items) => lista.push(...items),
+      .subscribe((items) => lista.push(...items), // agregar a lista
         (error) => console.error(error.error));
   }
 
@@ -24,9 +30,9 @@ export class PersistenceService {
   }
 
   getVehiculos(lista: any[]): Subscription {
-    lista.length = 0;
+    lista.length = 0; // limpiar lista
     return this.http.get<any>(environment.baseUrl + '/vehiculos')
-      .subscribe((items) => lista.push(...items),
+      .subscribe((items) => lista.push(...items), // agregar a lista
         (error) => console.error(error.error));
   }
 
@@ -37,9 +43,9 @@ export class PersistenceService {
   }
 
   getLicencias(lista: any[]): Subscription {
-    lista.length = 0;
+    lista.length = 0; // limpiar lista
     return this.http.get<any>(environment.baseUrl + '/licencias')
-      .subscribe((items) => lista.push(...items),
+      .subscribe((items) => lista.push(...items), // agregar a lista
         (error) => console.error(error.error));
   }
 
@@ -50,9 +56,9 @@ export class PersistenceService {
   }
 
   getGastos(lista: any[]): Subscription {
-    lista.length = 0;
+    lista.length = 0; // limpiar lista
     return this.http.get<any>(environment.baseUrl + '/gastos')
-      .subscribe((items) => lista.push(...items),
+      .subscribe((items) => lista.push(...items), // agregar a lista
         (error) => console.error(error.error));
   }
 
@@ -63,9 +69,9 @@ export class PersistenceService {
   }
 
   getHistorial(lista: any[]): Subscription {
-    lista.length = 0;
+    lista.length = 0; // limpiar lista
     return this.http.get<any>(environment.baseUrl + '/historial')
-      .subscribe((items) => lista.push(...items),
+      .subscribe((items) => lista.push(...items), // agregar a lista
         (error) => console.error(error.error));
   }
 

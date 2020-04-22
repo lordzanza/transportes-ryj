@@ -15,9 +15,10 @@ export class RegistroVehiculosComponent implements OnInit {
   }
 
   crearVehiculo(descripcion: string, placa: string, cilindraje: number, color: string, modelo: number) {
-    this.persistService.postVehiculos({ descripcion, placa, cilindraje, color, modelo }, (value) => {
+    this.persistService.postVehiculos({ descripcion, placa, cilindraje, color, modelo }, value => {
       this.persistService.getVehiculos(this.vehiculos);
-      alert(`El vehiculo con placa ${value.placa} fue registrado con exito!`);
+      alert(`El vehiculo con placa ${value.placa},
+             fue registrado con exito!`);
     });
   }
 

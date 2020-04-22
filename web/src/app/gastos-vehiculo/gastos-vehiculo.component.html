@@ -9,28 +9,32 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">acpm</th>
-        <th scope="col">peajes</th>
-        <th scope="col">seguro_Carro</th>
-        <th scope="col">cotas_llantas</th>
-        <th scope="col">cambio_aceite</th>
-        <th scope="col">seguro_tecnomecanica</th>
+        <th scope="col">Num</th>
+        <th scope="col">Num Vehiculo</th>
+        <th scope="col">Num Conductor</th>
+        <th scope="col">ACPM</th>
+        <th scope="col">Peajes</th>
+        <th scope="col">Seguro Carro</th>
+        <th scope="col">Cotas Llantas</th>
+        <th scope="col">Cambio Aceite</th>
+        <th scope="col">Seguro Tecnomecanica</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let gastos_vehiculo of gastosvehiculo">
-        <td>{{gastos_vehiculo.acpm}}</td>
-        <td>{{gastos_vehiculo.peajes}}</td>
-        <td>{{gastos_vehiculo.seguro_carro}}</td>
-        <td>{{gastos_vehiculo.cotas_llantas}}</td>
-        <td>{{gastos_vehiculo.cambio_aceite}}</td>
-        <td>{{gastos_vehiculo.seguro_tecnomecanica}}</td>
+      <tr *ngFor="let gasto of gastosVehiculo">
+        <td>{{gasto.id}}</td>
+        <td>{{gasto.id_vehiculo}}</td>
+        <td>{{gasto.id_conductor}}</td>
+        <td>{{gasto.acpm}}</td>
+        <td>{{gasto.peajes}}</td>
+        <td>{{gasto.seguro_carro}}</td>
+        <td>{{gasto.cotas_llantas}}</td>
+        <td>{{gasto.cambio_aceite}}</td>
+        <td>{{gasto.seguro_tecnomecanica}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="registrarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -45,44 +49,43 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label>acpm</label>
+            <label>ACPM</label>
             <input #acpm type="text" class="form-control" />
           </div>
           <div class="form-group">
             <label>Peajes</label>
-            <input #Peajes type="int" class="form-control" />
+            <input #peajes type="int" class="form-control" />
           </div>
 
           <div class="form-group">
-            <label>seguro_carro</label>
+            <label>Seguro Carro</label>
             <input #seguro_carro type="int" class="form-control" />
           </div>
 
           <div class="form-group">
-            <label>cotas_llantas</label>
+            <label>Cotas Llantas</label>
             <input #cotas_llantas type="text" class="form-control" />
           </div>
           <div class="form-group">
-            <label>cambio_aceite <address></address> </label>
+            <label>Cambio Aceite <address></address> </label>
             <input #cambio_aceite type="date" class="form-control" />
           </div>
           <div class="form-group">
-            <label>seguro_tecnomecanica</label>
+            <label>Seguro Tecnomecanica</label>
             <input #seguro_tecnomecanica type="text" class="form-control" />
           </div>
-
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="guardarReporteVehiculo(
           acpm.value,
-            Peajes.value,
-            seguro_carro.value,
-            cotas_llantas.value,
-            cambio_aceite.value,
-            seguro_tecnomecanica.value
-          )">Guardar</button>
+          peajes.value,
+          seguro_carro.value,
+          cotas_llantas.value,
+          cambio_aceite.value,
+          seguro_tecnomecanica.value
+        )">Guardar</button>
       </div>
     </div>
   </div>

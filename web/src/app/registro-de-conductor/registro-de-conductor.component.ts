@@ -14,11 +14,14 @@ export class RegistroDeConductorComponent implements OnInit {
     this.persistService.getLicencias(this.licencias);
   }
 
-  crearLicencia(id_conductor: number, categoria: string, restricciones: string){
-const licencia ={id_conductor, categoria, restricciones};
+  crearLicencia(idConductor: number, categoria: string, restricciones: string) {
+    const licencia = { id_conductor: idConductor, categoria, restricciones };
     this.persistService.postLicencias(licencia, (value) => {
       this.persistService.getLicencias(this.licencias);
-      alert(`Para el conductor con el numero ${value.id_conductor}, Se ha registrado la licencia con categoria ${value.categoria} con exito!`);
+      alert(`La licencia con categoria ${value.categoria},
+             para el conductor #${value.id_conductor},
+             fue registrada con exito!`);
     });
   }
+
 }

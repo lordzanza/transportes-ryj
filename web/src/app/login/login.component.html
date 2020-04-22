@@ -4,16 +4,19 @@
             <img src="assets/ico-camion.png" class="card-img-top" alt="...">
             <br>
             <br>
-            <form >
+            <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="usuario">Usuario</label>
+                    <input #usuario type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="clave">Clave</label>
+                    <input #clave type="password" class="form-control">
                 </div>
-                <button class="btn btn-primary btn-block" [routerLink]="[ '/blackboard' ]" id="btnColor">Ingresar</button>
+                <button id="btnColor" type="button" class="btn btn-primary btn-block" (click)="login(
+                    usuario.value,
+                    clave.value
+                  )">Ingresar</button>
             </form>
         </div>
     </div>
